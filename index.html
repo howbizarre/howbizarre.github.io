@@ -10,8 +10,17 @@
         <meta name="theme-color" content="#efecea" />
 
         <style>
-            .yatra_one {
-                font-family: "Yatra One", cursive;
+            .uk-card-default {
+                color: #3c3c3c;
+                transition: all 0.25s;
+            }
+            .uk-card-default:hover {
+                box-shadow: none;
+            }
+            @media (max-width: 960px) {
+                .uk-card-default {
+                    box-shadow: none !important;
+                }
             }
         </style>
     </head>
@@ -19,12 +28,12 @@
         <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-text-center">
             <div class="uk-card uk-card-default uk-card-body">
                 <img src="errazib_300_blue.svg" class="uk-width-1-2@m" alt="As known as How Bizarre" uk-img />
-                <h1 class="yatra_one">How Bizarre</h1>
-                <p class="yatra_one">I am a Front-end Senpai, who strictly follows the W3Code of Bushido!</p>
+                <h1 style="font-family: 'Yatra One'">How Bizarre</h1>
+                <p style="font-family: Merriweather">I am a Front-end Senpai, who strictly follows the W3Code of Bushido!</p>
             </div>
         </div>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css" />
-        <link rel="stylesheet" media="print" onload="this.removeAttribute('media');this.onload=null" href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" />
+        <link rel="stylesheet" media="print" onload="this.removeAttribute('media');this.onload=null" href="https://fonts.googleapis.com/css2?family=Merriweather&family=Yatra+One&display=swap" />
     </body>
 </html>
