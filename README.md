@@ -1,24 +1,2 @@
-# vueapp
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# As known as How Bizarre
+I am a Front-end Senpai, who strictly follows the W3Code of Bushido!
