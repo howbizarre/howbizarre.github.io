@@ -1,4 +1,4 @@
-# vueapp
+# As known as How Bizarre
 
 ## Project setup
 ```
