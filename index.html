@@ -1,63 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
 
-        <title>How Bizarre</title>
+<head>
+    <meta charset="utf-8" />
 
-        <meta name="description" content="As known as How Bizarre" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#efecea" />
+    <title>How Bizarre</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="description" content="As known as How Bizarre" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efecea" />
 
-        <style>
-            #how-bizarre {
-                --dot-size: 2rem;
-                --dot-position: 1rem;
-                --light-gray: #efecea;
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-                transform: rotate(5deg);
-                border: 1px solid var(--light-gray);
-                border-radius: var(--dot-size);
-                position: relative;
-            }
-            #how-bizarre::before {
-                content: "";
-                display: block;
+    <style>
+        #how-bizarre {
+            --dot-size: 2rem;
+            --dot-position: 1rem;
+            --light-gray: #efecea;
 
-                width: var(--dot-size);
-                height: var(--dot-size);
+            transform: rotate(5deg);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--dot-size);
+            position: relative;
+        }
 
-                background-color: #fff;
-                border: 1px solid --light-gray;
-                border-radius: var(--dot-position);
-                
-                box-shadow: inset 0 0.3rem 0.9rem rgba(0, 0, 0, 0.08);
-                
-                position: absolute;
-                top: var(--dot-position);
-                left: var(--dot-position);
-            }
-            #how-bizarre h1 {
-                font-family: "Yatra One", cursive;
-            }
-            #how-bizarre p {
-                font-family: "Merriweather", serif;
-            }
-        </style>
-    </head>
-    <body style="overflow-x: hidden">
-        <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-text-center">
-            <div id="how-bizarre" class="uk-card uk-card-default uk-card-body">
-                <img src="errazib_300_blue.svg" class="uk-width-1-2@m" alt="As known as How Bizarre" uk-img />
-                <h1>How Bizarre</h1>
-                <p>I am a Front-end Senpai, who strictly follows the W3Code of Bushido!</p>
-            </div>
+        #how-bizarre::before {
+            content: "";
+            display: block;
+
+            width: var(--dot-size);
+            height: var(--dot-size);
+
+            background-color: #fff;
+            border: 1px solid --light-gray;
+            border-radius: var(--dot-position);
+
+            box-shadow: inset 0 0.3rem 0.9rem rgba(0, 0, 0, 0.08);
+
+            position: absolute;
+            top: var(--dot-position);
+            left: var(--dot-position);
+        }
+
+        #how-bizarre h1 {
+            font-family: "Yatra One", cursive;
+        }
+
+        #how-bizarre p {
+            font-family: "Merriweather", serif;
+        }
+    </style>
+</head>
+
+<body style="overflow-x: hidden">
+    <div class="uk-height-viewport uk-flex uk-flex-center uk-flex-middle uk-text-center">
+        <div id="how-bizarre" class="uk-card uk-card-default uk-card-body">
+            <img src="errazib_300_blue.svg" class="uk-width-1-2@m" alt="As known as How Bizarre" uk-img />
+            <h1>How Bizarre</h1>
+            <p>I am a Front-end Senpai, who strictly follows the W3Code of Bushido!</p>
         </div>
+    </div>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css" />
-        <link rel="stylesheet" media="print" onload="this.removeAttribute('media');this.onload=null" href="https://fonts.googleapis.com/css2?family=Merriweather&family=Yatra+One&display=swap" />
-    </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css" />
+    <link rel="stylesheet" media="print" onload="this.removeAttribute('media');this.onload=null"
+        href="https://fonts.googleapis.com/css2?family=Merriweather&family=Yatra+One&display=swap" />
+</body>
+
 </html>
