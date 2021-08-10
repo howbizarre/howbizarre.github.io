@@ -14,22 +14,26 @@
 
         <style>
             #how-bizarre {
+                --dot-size: 2rem;
+                --dot-position: 1rem;
+                --light-gray: #efecea;
+
                 transform: rotate(5deg);
-                border: 1px solid #efecea;
+                border: 1px solid --light-gray;
                 position: relative;
-                border-radius: 2rem;
+                border-radius: --dot-size;
             }
             #how-bizarre::before {
                 content: "";
                 display: block;
-                width: 2rem;
-                height: 2rem;
+                width: --dot-size;
+                height: --dot-size;
                 background-color: #fff;
-                border: 1px solid #efecea;
+                border: 1px solid --light-gray;
                 position: absolute;
-                top: 1rem;
-                left: 1rem;
-                border-radius: 1rem;
+                top: -dot-position;
+                left: -dot-position;
+                border-radius: -dot-position;
                 box-shadow: inset 0 0.3rem 0.9rem rgba(0, 0, 0, 0.08);
             }
             #how-bizarre h1 {
