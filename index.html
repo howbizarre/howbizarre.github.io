@@ -19,22 +19,26 @@
                 --light-gray: #efecea;
 
                 transform: rotate(5deg);
-                border: 1px solid --light-gray;
+                border: 1px solid var(--light-gray);
+                border-radius: var(--dot-size);
                 position: relative;
-                border-radius: --dot-size;
             }
             #how-bizarre::before {
                 content: "";
                 display: block;
-                width: --dot-size;
-                height: --dot-size;
+
+                width: var(--dot-size);
+                height: var(--dot-size);
+
                 background-color: #fff;
                 border: 1px solid --light-gray;
-                position: absolute;
-                top: -dot-position;
-                left: -dot-position;
-                border-radius: -dot-position;
+                border-radius: var(--dot-position);
+                
                 box-shadow: inset 0 0.3rem 0.9rem rgba(0, 0, 0, 0.08);
+                
+                position: absolute;
+                top: var(--dot-position);
+                left: var(--dot-position);
             }
             #how-bizarre h1 {
                 font-family: "Yatra One", cursive;
