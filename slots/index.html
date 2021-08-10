@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="bg">
+
 <head>
     <meta charset="utf-8">
 
@@ -40,6 +41,7 @@
         }
     </style>
 </head>
+
 <body>
     <main>
         <h1 class="visually-hidden">Foodi Slots</h1>
@@ -49,12 +51,8 @@
                 <span class="fs-4">Foodi РЕГИОНИ</span>
             </a>
             <hr>
-            <ul id="regions-list" class="nav nav-pills flex-column mb-auto">
-                <li v-for="region in regions">
-                    <a href="#" class="nav-link text-white">
-                        {{ region.name }}
-                    </a>
-                </li>
+            <ul id="list-of-regions" class="nav nav-pills flex-column mb-auto">
+                <list-of-items v-for="region in regions" v-bind:region="region" v-bind:key="region.id"></list-of-items>
             </ul>
             <hr>
             <div class="dropdown">
@@ -87,19 +85,24 @@
             data() {
                 return {
                     regions: [
-                        { name: 'СОФИЯ' },
-                        { name: 'ПЛОВДИВ' },
-                        { name: 'ВАРНА' },
-                        { name: 'БУРГАС' },
-                        { name: 'СТАРА ЗАГОРА' },
-                        { name: 'ВИДИН' },
-                        { name: 'ХАСКОВО' }
+                        { id: 0, name: 'СОФИЯ' },
+                        { id: 1, name: 'ПЛОВДИВ' },
+                        { id: 2, name: 'ВАРНА' },
+                        { id: 3, name: 'БУРГАС' },
+                        { id: 4, name: 'СТАРА ЗАГОРА' },
+                        { id: 5, name: 'ВИДИН' },
+                        { id: 6, name: 'ХАСКОВО' }
                     ]
                 }
             }
         };
+        const app = Vue.createApp(ListRegions);
 
-        Vue.createApp(ListRegions).mount('#regions-list');
+        app.component('list-of-items', {
+            props: ['region'],
+            template: `<li><a href="#" title="" class="nav-link text-white">{{ region.name }}</a></li>`
+        }).mount('#list-of-regions');
     </script>
 </body>
+
 </html>
