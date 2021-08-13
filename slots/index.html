@@ -1,106 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bg">
+    <head>
+        <meta charset="utf-8" />
 
-<head>
-    <meta charset="utf-8">
+        <title>Foodi Slots</title>
 
-    <title>Foodi Slots</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="User interface for Foodis' slots" />
+        <meta name="theme-color" content="#efecea" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="User interface for Foodis' slots" />
-    <meta name="theme-color" content="#efecea" />
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <style>
-        body {
-            min-height: 100vh;
-        }
-
-        main {
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100vh;
-            max-height: 100vh;
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
-
-        .b-divider {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .dropdown-toggle {
-            outline: 0;
-        }
-
-        #regions {
-            box-shadow: 0 0 2rem rgba(0, 0, 0, 0.75);
-        }
-    </style>
-</head>
-
-<body>
-    <main>
-        <h1 class="visually-hidden">Foodi Slots</h1>
-        <div id="regions" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-            <a href="/"
-                class="d-flex align-items-center justify-content-center w-100 mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-4">Foodi РЕГИОНИ</span>
-            </a>
-            <hr>
-            <ul id="list-of-regions" class="nav nav-pills flex-column mb-auto">
-                <list-of-items v-for="region in regions" v-bind:region="region" v-bind:key="region.id"></list-of-items>
-            </ul>
-            <hr>
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong>Fdi</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="b-divider"></div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue@next"></script>
-    <script>
-        const ListRegions = {
-            data() {
-                return {
-                    regions: [
-                        { id: 0, name: 'СОФИЯ' },
-                        { id: 1, name: 'ПЛОВДИВ' },
-                        { id: 2, name: 'ВАРНА' },
-                        { id: 3, name: 'БУРГАС' },
-                        { id: 4, name: 'СТАРА ЗАГОРА' },
-                        { id: 5, name: 'ВИДИН' },
-                        { id: 6, name: 'ХАСКОВО' }
-                    ]
-                }
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+        <style>
+            body {
+                min-height: 100vh;
             }
-        };
-        const app = Vue.createApp(ListRegions);
 
-        app.component('list-of-items', {
-            props: ['region'],
-            template: `<li><a href="#" title="" class="nav-link text-white">{{ region.name }}</a></li>`
-        }).mount('#list-of-regions');
-    </script>
-</body>
+            main {
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100vh;
+                max-height: 100vh;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
 
+            .b-divider {
+                flex-shrink: 0;
+                width: 1.5rem;
+                height: 100vh;
+            }
+
+            .dropdown-toggle {
+                outline: 0;
+            }
+
+            #regions {
+                box-shadow: 0 0 2rem rgba(0, 0, 0, 0.75);
+            }
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <h1 class="visually-hidden">Foodi Slots</h1>
+            <div id="regions" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
+                <a href="/" class="d-flex align-items-center justify-content-center w-100 mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-4">Foodi РЕГИОНИ</span>
+                </a>
+                <hr />
+                <ul id="list-of-regions" class="nav nav-pills flex-column mb-auto">
+                    <list-of-items v-for="region in regions" v-bind:region="region" v-bind:key="region.id"></list-of-items>
+                </ul>
+                <hr />
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2" />
+                        <strong>Fdi</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="b-divider"></div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const ListRegions = {
+                data() {
+                    return {
+                        regions: [
+                            { id: 0, name: "СОФИЯ" },
+                            { id: 1, name: "ПЛОВДИВ" },
+                            { id: 2, name: "ВАРНА" },
+                            { id: 3, name: "БУРГАС" },
+                            { id: 4, name: "СТАРА ЗАГОРА" },
+                            { id: 5, name: "ВИДИН" },
+                            { id: 6, name: "ХАСКОВО" },
+                        ],
+                    };
+                },
+            };
+            const app = Vue.createApp(ListRegions);
+
+            app.component("list-of-items", {
+                props: ["region"],
+                template: `<li><a href="#" title="" class="nav-link text-white">{{ region.name }}</a></li>`,
+            });
+
+            app.mount("#list-of-regions");
+        </script>
+    </body>
 </html>
