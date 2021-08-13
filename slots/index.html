@@ -45,7 +45,7 @@
             <h1 class="visually-hidden">Foodi Slots</h1>
             <div id="regions" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
                 <a href="/" class="d-flex align-items-center justify-content-center w-100 mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-4">Foodi РЕГИОНИ</span>
+                    <small-title msg="Foodi РЕГИОНИ"></small-title>
                 </a>
                 <hr />
                 <ul id="list-of-regions" class="nav nav-pills flex-column mb-auto">
@@ -95,7 +95,12 @@
                 template: `<li><a href="#" title="" class="nav-link text-white">{{ region.name }}</a></li>`,
             });
 
-            app.mount("#list-of-regions");
+            app.component("small-title", {
+                props: ["msg"],
+                template: `<span class="fs-4">{{ msg }}</span>`,
+            });
+
+            app.mount("#regions");
         </script>
     </body>
 </html>
