@@ -44,13 +44,12 @@
         <main>
             <h1 class="visually-hidden">Foodi Slots</h1>
             <div id="regions" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px">
-                <a href="/" class="d-flex align-items-center justify-content-center w-100 mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <a href="/" class="d-flex align-items-center justify-content-center w-100 mb-3 me-md-auto text-white text-decoration-none">
                     <small-title msg="Foodi РЕГИОНИ"></small-title>
                 </a>
-                <hr />
-                <ul id="list-of-regions" class="nav nav-pills flex-column mb-auto">
-                    <list-of-items v-for="region in regions" v-bind:region="region" v-bind:key="region.id"></list-of-items>
-                </ul>
+                <div-list>
+                    <list-of-items v-for="region in regions" @listid="activeId = $event" :getactive="activeId" :item="region" :key="region.id"></list-of-items>
+                </div-list>
                 <hr />
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,23 +75,41 @@
             const ListRegions = {
                 data() {
                     return {
-                        regions: [
-                            { id: 0, name: "СОФИЯ" },
-                            { id: 1, name: "ПЛОВДИВ" },
-                            { id: 2, name: "ВАРНА" },
-                            { id: 3, name: "БУРГАС" },
-                            { id: 4, name: "СТАРА ЗАГОРА" },
-                            { id: 5, name: "ВИДИН" },
-                            { id: 6, name: "ХАСКОВО" },
+                        "regions": [
+                            { "id": 0, "name": "СОФИЯ", "url": "sofia" },
+                            { "id": 1, "name": "ПЛОВДИВ", "url": "plovdiv" },
+                            { "id": 2, "name": "ВАРНА", "url": "varna" },
+                            { "id": 3, "name": "БУРГАС", "url": "burgas" },
+                            { "id": 4, "name": "СТАРА ЗАГОРА", "url": "st-zagora" },
+                            { "id": 5, "name": "ВИДИН", "url": "vidin" },
+                            { "id": 6, "name": "ХАСКОВО", "url": "haskovo" },
                         ],
+                        "activeId": 0,
                     };
                 },
             };
             const app = Vue.createApp(ListRegions);
 
             app.component("list-of-items", {
-                props: ["region"],
-                template: `<li><a href="#" title="" class="nav-link text-white">{{ region.name }}</a></li>`,
+                props: ["item", "getactive"],
+                template: `
+                    <a :href="'#' + item.url" :title="item.name" class="list-group-item list-group-item-action list-group-item-secondary" :class="{ 'active': (item.id ===  getactive) }" @click.stop="toggleActive(item.id)">
+                        {{ item.name }}
+                    </a>
+                `,
+                methods: {
+                    toggleActive(id) {
+                        this.$emit("listid", id);
+                    },
+                },
+            });
+
+            app.component("div-list", {
+                template: `
+                    <div class="list-group flex-column mb-auto rounded-0">
+                        <slot></slot>
+                    </div>
+                `,
             });
 
             app.component("small-title", {

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="utf-8" />
+
+        <title>Foodi Slots</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="User interface for Foodis' slots" />
+        <meta name="theme-color" content="#efecea" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    </head>
+
+    <body>
+        <main id="regions" class="container my-5">
+            <div-list>
+                <list-of-items v-for="region in regions" @listid="activeId = $event" :getactive="activeId" :item="region" :key="region.id"></list-of-items>
+            </div-list>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const ListRegions = {
+                data() {
+                    return {
+                        "regions": [
+                            { "id": 0, "name": "СОФИЯ", "url": "sofia" },
+                            { "id": 1, "name": "ПЛОВДИВ", "url": "plovdiv" },
+                            { "id": 2, "name": "ВАРНА", "url": "varna" },
+                            { "id": 3, "name": "БУРГАС", "url": "burgas" },
+                            { "id": 4, "name": "СТАРА ЗАГОРА", "url": "st-zagora" },
+                            { "id": 5, "name": "ВИДИН", "url": "vidin" },
+                            { "id": 6, "name": "ХАСКОВО", "url": "haskovo" },
+                        ],
+                        "activeId": 0,
+                    };
+                },
+            };
+            const app = Vue.createApp(ListRegions);
+
+            app.component("list-of-items", {
+                props: ["item", "getactive"],
+                template: `
+                    <a :href="'#' + item.url" :title="item.name" class="list-group-item list-group-item-action" :class="{ 'active': (item.id ===  getactive) }" @click.stop="toggleActive(item.id)">
+                        {{ item.name }}
+                    </a>
+                `,
+                methods: {
+                    toggleActive(id) {
+                        this.$emit("listid", id);
+                    },
+                },
+            });
+
+            app.component("div-list", {
+                template: `
+                    <div class="list-group">
+                        <slot></slot>
+                    </div>
+                `,
+            });
+
+            app.component("small-title", {
+                props: ["msg"],
+                template: `<span class="fs-4">{{ msg }}</span>`,
+            });
+
+            app.mount("#regions");
+        </script>
+    </body>
+</html>
