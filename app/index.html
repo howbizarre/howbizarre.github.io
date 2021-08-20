@@ -29,34 +29,35 @@
             <div class="row">
                 <nav id="foodi-regions" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <div class="position-sticky pt-3">
-                        <unordered-list :is="currentRegion">
-                            <list-of-items v-if="gettingRegions" v-for="region in gettingRegions" @listid="activeId = $event" :getactive="activeId" :item="region" :key="region.id"></list-of-items>
+                        <unordered-list v-if="gettingRegions" :is="currentRegion">
+                            <list-of-items v-for="region in gettingRegions" @listid="activeId = $event" :getactive="activeId" :item="region" :key="region.id"></list-of-items>
+                        </unordered-list>
+                        <unordered-list v-else>
+                            <li class="nav-item"><span class="nav-link">Loading...</span></li>
                         </unordered-list>
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <current-region :msg="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url"></current-region>
-                    </div>
+                <main class="col-md-9 mt-3 ms-sm-auto col-lg-10 px-md-4">
+                    <current-region :msg="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url">
+                        <template #towns>
+                            <towns-lists :msg="activeRegion.url"></towns-lists>
+                        </template>
+                        <template #lots>
+                            <lots></lots>
+                        </template>
+                    </current-region>
                 </main>
             </div>
         </main>
-
-        <!-- <div id="watch-example">
-            <p>
-                Ask a yes/no question:
-                <input v-model="question" />
-            </p>
-            <p>{{ answer }}</p>
-        </div> -->
 
         <script src="https://unpkg.com/bootstrap"></script>
         <script src="https://unpkg.com/vue@next"></script>
         <script src="https://unpkg.com/axios"></script>
         <script>
-            const uri = "../models/regions.json";
-
+            const pathDB = "../models/";
+            const extDB = "json";
+            const regionsDB = "regions";
             const ListRegions = {
                 data() {
                     return {
@@ -70,8 +71,8 @@
                         this.activeRegion = this.gettingRegions ? this.gettingRegions[this.activeId] : this.activeRegion;
                     },
                 },
-                beforeCreate: function () {
-                    axios.get("../models/regions.json").then((response) => {
+                mounted: function () {
+                    axios.get(pathDB + regionsDB + "." + extDB).then((response) => {
                         this.gettingRegions = response.data.regions;
                     });
                 },
@@ -105,47 +106,47 @@
             app.component("current-region", {
                 props: ["msg", "id", "slug"],
                 template: `
-                    <h1 class="h2">{{ msg }}</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group me-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">{{ id }}</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">{{ slug }}</button>
+                    <div class="nav nav-tabs">
+                        <h1 class="h4 me-3">{{ msg }}</h1>
+                        <button class="nav-link active" data-bs-toggle="tab" :data-bs-target="'#towns-' + slug">ГРАДОВЕ</button>
+                        <button class="nav-link" data-bs-toggle="tab" :data-bs-target="'#lots-' + slug">ЛОТОВЕ</button>
+                    </div>
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane fade show active" :id="'towns-' + slug">
+                            <slot name="towns"></slot>
+                        </div>
+                        <div class="tab-pane fade" :id="'lots-' + slug">
+                            <slot name="lots"></slot>
                         </div>
                     </div>
                 `,
             });
 
-            app.mount("#regions");
+            app.component("towns-lists", {
+                props: ["msg"],
+                data() {
+                    return {
+                        activeTowns: 0,
+                    };
+                },
+                template: `
+                    <p>{{activeTowns}}</p>
+                `,
+                created: function () {
+                    console.log(this.msg);
+                    axios.get(pathDB + this.msg + "." + extDB).then((response) => {
+                        this.activeTowns = response.data[this.msg];
+                    });
+                },
+            });
 
-            // const watchExampleVM = Vue.createApp({
-            //     data() {
-            //         return {
-            //             question: "",
-            //             answer: "Questions usually contain a question mark. ;-)",
-            //         };
-            //     },
-            //     watch: {
-            //         // whenever question changes, this function will run
-            //         question(newQuestion, oldQuestion) {
-            //             if (newQuestion.indexOf("?") > -1) {
-            //                 this.getAnswer();
-            //             }
-            //         },
-            //     },
-            //     methods: {
-            //         getAnswer() {
-            //             this.answer = "Thinking...";
-            //             axios
-            //                 .get("https://yesno.wtf/api")
-            //                 .then((response) => {
-            //                     this.answer = response.data.answer;
-            //                 })
-            //                 .catch((error) => {
-            //                     this.answer = "Error! Could not reach the API. " + error;
-            //                 });
-            //         },
-            //     },
-            // }).mount("#watch-example");
+            app.component("lots", {
+                template: `
+                    <p>Lots</p>
+                `,
+            });
+
+            app.mount("#regions");
         </script>
     </body>
 </html>
