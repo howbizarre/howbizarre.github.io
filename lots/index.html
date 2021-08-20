@@ -33,7 +33,7 @@
                             <list-of-items v-for="region in gettingRegions" @listid="activeId = $event" :getactive="activeId" :item="region" :key="region.id"></list-of-items>
                         </unordered-list>
                         <unordered-list v-else>
-                            <li class="nav-item"><span class="nav-link">Loading...</span></li>
+                            <li class="nav-item"><span class="nav-link">Зареждам...</span></li>
                         </unordered-list>
                     </div>
                 </nav>
@@ -62,7 +62,7 @@
                 data() {
                     return {
                         "activeId": 0,
-                        "activeRegion": { "id": 0, "name": "СОФИЯ", "url": "sofia" },
+                        "activeRegion": { "id": 5, "name": "СОФИЯ", "url": "sofia" },
                         "gettingRegions": null,
                     };
                 },
@@ -126,7 +126,7 @@
                 props: ["msg"],
                 data() {
                     return {
-                        activeTowns: "Loading...",
+                        activeTowns: "Зареждам...",
                     };
                 },
                 template: `
@@ -135,17 +135,13 @@
                 watch: {
                     msg: {
                         handler(newMsg, oldMsg) {
-                            console.log("Watch: ", newMsg, oldMsg);
-                            console.log("activeTowns: ", this.$data.activeTowns);
                             axios
                                 .get(pathDB + newMsg + "." + extDB)
                                 .then((response) => {
-                                    console.log("Response: ", response.data[newMsg]);
-                                    console.log("activeTowns: ", this.activeTowns);
                                     this.activeTowns = response.data[newMsg];
                                 })
-                                .catch(function (error) {
-                                    console.log("Error: ", error);
+                                .catch((error) => {
+                                    this.activeTowns = "Няма дефинирани обекти!?";
                                 });
                         },
                     },

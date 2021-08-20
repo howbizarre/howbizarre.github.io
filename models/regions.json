@@ -1,11 +1,12 @@
 {
     "regions": [
-        { "id": 0, "name": "СОФИЯ", "url": "sofia" },
-        { "id": 1, "name": "ПЛОВДИВ", "url": "plovdiv" },
-        { "id": 2, "name": "ВАРНА", "url": "varna" },
-        { "id": 3, "name": "БУРГАС", "url": "burgas" },
-        { "id": 4, "name": "СТАРА ЗАГОРА", "url": "st-zagora" },
-        { "id": 5, "name": "ВИДИН", "url": "vidin" },
-        { "id": 6, "name": "ХАСКОВО", "url": "haskovo" }
+        { "id": 0, "name": "БУРГАС", "url": "burgas" },
+        { "id": 1, "name": "ВАРНА", "url": "varna" },
+        { "id": 2, "name": "ВИДИН", "url": "vidin" },
+        { "id": 3, "name": "ПЛОВДИВ", "url": "plovdiv" },
+        { "id": 4, "name": "РУСЕ", "url": "ruse" },
+        { "id": 5, "name": "СОФИЯ", "url": "sofia" },
+        { "id": 6, "name": "СТАРА ЗАГОРА", "url": "st-zagora" },
+        { "id": 7, "name": "ХАСКОВО", "url": "haskovo" }
     ]
 }
