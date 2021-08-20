@@ -130,7 +130,12 @@
                     };
                 },
                 template: `
-                    <p>{{ activeTowns }}</p>
+                    <div>
+                        <div v-for="town in activeTowns" class="badge rounded-pill bg-secondary fs-6 m-2">
+                        {{ town }} <button type="button" class="btn btn-sm btn-close btn-close-white" aria-label="Close"></button>
+                        </div>
+                        <hr />
+                    </div>
                 `,
                 watch: {
                     msg: {
