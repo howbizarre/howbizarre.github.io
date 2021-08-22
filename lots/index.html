@@ -83,7 +83,7 @@
                 props: ["item", "getactive"],
                 template: `
                     <li class="nav-item">
-                        <a :href="'#' + item.url + '/'" :title="item.name" :class="{ 'active': (item.id ===  getactive) }" class="nav-link" @click.stop="toggleActive(item.id)">
+                        <a :href="'#' + item.url" :title="item.name" :class="{ 'active': (item.id ===  getactive) }" class="nav-link" @click.stop="toggleActive(item.id)">
                             {{ item.name }}
                         </a>
                     </li>
@@ -131,10 +131,21 @@
                 },
                 template: `
                     <div>
-                        <div v-for="town in activeTowns" class="badge rounded-pill bg-secondary fs-6 m-2">
-                        {{ town }} <button type="button" class="btn btn-sm btn-close btn-close-white" aria-label="Close"></button>
-                        </div>
+                        <h3 class="m-2">Активни</h3>
+                        <span v-if="activeTowns.active && activeTowns.active.length > 0">
+                            <div v-for="town in activeTowns.active" class="badge rounded-pill bg-secondary fs-6 m-2">
+                                {{ town }} <button type="button" class="btn btn-sm btn-close btn-close-white" aria-label="Close"></button>
+                            </div>
+                        </span>
+                        <span v-else class="m-2">Добавете региони!?</span>
                         <hr />
+                        <h3 class="m-2">Не активни</h3>
+                        <span v-if="activeTowns.inactive && activeTowns.inactive.length > 0">
+                            <button v-for="town in activeTowns.inactive" class="btn btn-primary badge rounded-pill fs-6 m-2">
+                                {{ town }}
+                            </button>
+                        </span>
+                        <span v-else class="m-2">Няма неактивни региони.</span>
                     </div>
                 `,
                 watch: {
