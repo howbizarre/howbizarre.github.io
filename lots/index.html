@@ -39,12 +39,12 @@
                 </nav>
 
                 <main class="col-md-9 mt-3 ms-sm-auto col-lg-10 px-md-4">
-                    <current-region :msg="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url">
+                    <current-region :town="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url">
                         <template #towns>
                             <towns-lists :msg="activeRegion.url"></towns-lists>
                         </template>
                         <template #lots>
-                            <lots></lots>
+                            <lots :town="activeRegion.url"></lots>
                         </template>
                     </current-region>
                 </main>
@@ -55,6 +55,54 @@
         <script src="https://unpkg.com/vue@next"></script>
         <script src="https://unpkg.com/axios"></script>
         <script>
+            const currentWeekNumber = () => {
+                const currentDate = new Date();
+                const getDay = currentDate.getDay();
+                const oneJan = new Date(currentDate.getFullYear(), 0, 1);
+                const numberOfDays = Math.floor((currentDate - oneJan) / (24 * 60 * 60 * 1000));
+                const weekNumber = Math.ceil((getDay + 1 + numberOfDays) / 7);
+
+                return weekNumber;
+            };
+
+            const getDateRangeOfWeek = (weekNo, currentWeek) => {
+                const d1 = new Date();
+                const numOfdaysPastSinceLastMonday = d1.getDay() - 1;
+                const weekNoToday = currentWeek;
+
+                let weeksInTheFuture, rangeIsFrom, rangeIsTo;
+
+                console.log(d1.getDate() - numOfdaysPastSinceLastMonday);
+
+                d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+                weeksInTheFuture = weekNo - weekNoToday;
+                d1.setDate(d1.getDate() + 7 * weeksInTheFuture);
+                rangeIsFrom = d1.getMonth() + 1 + "/" + d1.getDate() + "/" + d1.getFullYear();
+                d1.setDate(d1.getDate() + 6);
+                rangeIsTo = d1.getMonth() + 1 + "/" + d1.getDate() + "/" + d1.getFullYear();
+
+                return rangeIsFrom + " to " + rangeIsTo;
+            };
+
+            console.log(getDateRangeOfWeek(currentWeekNumber(), currentWeekNumber()));
+
+            const dateFunction = () => {
+                const currentDate = new Date();
+                const getDay = currentDate.getDay();
+                const weekNumber = currentWeekNumber();
+
+                const first = currentDate.getDate() - (getDay - 1); // First day is the day of the month - the day of the week
+                const last = first + 6; // last day is the first day + 6
+
+                const dateFormat = { month: "numeric", day: "numeric" };
+                const yearFormat = { year: "numeric" };
+
+                const firstDayOfWeek = new Intl.DateTimeFormat("bg-BG", dateFormat).format(currentDate.setDate(first));
+                const lastDayOfWeek = new Intl.DateTimeFormat("bg-BG", dateFormat).format(currentDate.setDate(last));
+                const currentYear = new Intl.DateTimeFormat("bg-BG", yearFormat).format(currentDate);
+
+                return [`Седмица ${weekNumber}`, `от ${firstDayOfWeek} до ${lastDayOfWeek}`, currentYear].join(" - ");
+            };
             const pathDB = "../models/";
             const extDB = "json";
             const regionsDB = "regions";
@@ -104,10 +152,10 @@
             });
 
             app.component("current-region", {
-                props: ["msg", "id", "slug"],
+                props: ["town", "id", "slug"],
                 template: `
                     <div class="nav nav-tabs">
-                        <h1 class="h4 me-3">{{ msg }}</h1>
+                        <h1 class="h4 me-3">{{ town }}</h1>
                         <button class="nav-link active" data-bs-toggle="tab" :data-bs-target="'#towns-' + slug">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
                                 <path fill="none" d="M0 0h24v24H0z"/>
@@ -142,7 +190,7 @@
                     };
                 },
                 template: `
-                    <div>
+                    <div class="mb-5">
                         <h3 class="m-2">Активни</h3>
                         <span v-if="activeTowns.active && activeTowns.active.length > 0">
                             <div v-for="town in activeTowns.active" class="badge rounded-pill bg-secondary fs-6 m-2">
@@ -151,7 +199,7 @@
                         </span>
                         <span v-else class="m-2">Добавете региони!?</span>
                         <hr />
-                        <h3 class="m-2">Не активни</h3>
+                        <h3 class="m-2">Неактивни</h3>
                         <span v-if="activeTowns.inactive && activeTowns.inactive.length > 0">
                             <button v-for="town in activeTowns.inactive" class="btn btn-primary badge rounded-pill fs-6 m-2">
                                 {{ town }}
@@ -182,8 +230,14 @@
             });
 
             app.component("lots", {
+                props: ["town", "week"],
+                data() {
+                    return {
+                        dateExpl: dateFunction(),
+                    };
+                },
                 template: `
-                    <p>Lots</p>
+                    <p>{{dateExpl}}</p>
                 `,
             });
 
