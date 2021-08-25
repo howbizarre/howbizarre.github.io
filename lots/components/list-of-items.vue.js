@@ -3,7 +3,7 @@ export default {
     props: ["item", "getactive"],
     template: `
         <li class="nav-item">
-            <a :href="'#' + item.url" :title="item.name" :class="{ 'active': (item.id ===  getactive) }" class="nav-link" @click.stop="toggleActive(item.id)">
+            <a data-bs-toggle="collapse" href="#foodi-regions" :title="item.name" :class="{ 'active': (item.id ===  getactive) }" class="nav-link" @click.stop="toggleActive(item.id)">
                 {{ item.name }}
             </a>
         </li>
