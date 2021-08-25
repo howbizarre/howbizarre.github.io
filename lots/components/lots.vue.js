@@ -3,38 +3,79 @@ export default {
     props: ["town", "week"],
     data() {
         return {
-            dateExpl: this.dateFunction(),
+            currentWeek: this.getDateRangeOfWeek(this.currentWeekNumber()),
+            nextWeek: this.getDateRangeOfWeek(this.currentWeekNumber() + 1),
+            futureWeek: this.getDateRangeOfWeek(this.currentWeekNumber() + 2),
         };
     },
     template: `
-        <p>{{dateExpl}}</p>
+        <div class="accordion" id="threeWeekLots">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="weekOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#currentWeek" aria-expanded="true" aria-controls="currentWeek">
+                        {{currentWeek}}
+                    </button>
+                </h2>
+                <div id="currentWeek" class="accordion-collapse collapse show" aria-labelledby="weekOne" data-bs-parent="#threeWeekLots">
+                    <div class="accordion-body">
+                        Lots for {{town}}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="weekTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nextWeek" aria-expanded="false" aria-controls="nextWeek">
+                        {{nextWeek}}
+                    </button>
+                </h2>
+                <div id="nextWeek" class="accordion-collapse collapse" aria-labelledby="weekTwo" data-bs-parent="#threeWeekLots">
+                    <div class="accordion-body">
+                        Lots for {{town}}
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="weekThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#futureWeek" aria-expanded="false" aria-controls="futureWeek">
+                        {{futureWeek}}
+                    </button>
+                </h2>
+                <div id="futureWeek" class="accordion-collapse collapse" aria-labelledby="weekThree" data-bs-parent="#threeWeekLots">
+                    <div class="accordion-body">
+                        Lots for {{town}}
+                    </div>
+                </div>
+            </div>
+        </div>
     `,
     methods: {
-        dateFunction() {
-            const currentDate = new Date();
-            const getDay = currentDate.getDay();
-            const weekNumber = this.currentWeekNumber();
-
-            const first = currentDate.getDate() - (getDay - 1); // First day is the day of the month - the day of the week
-            const last = first + 6; // last day is the first day + 6
-
-            const dateFormat = { month: "numeric", day: "numeric" };
-            const yearFormat = { year: "numeric" };
-
-            const firstDayOfWeek = new Intl.DateTimeFormat("bg-BG", dateFormat).format(currentDate.setDate(first));
-            const lastDayOfWeek = new Intl.DateTimeFormat("bg-BG", dateFormat).format(currentDate.setDate(last));
-            const currentYear = new Intl.DateTimeFormat("bg-BG", yearFormat).format(currentDate);
-
-            return [`Седмица ${weekNumber}`, `от ${firstDayOfWeek} до ${lastDayOfWeek}`, currentYear].join(" - ");
-        },
         currentWeekNumber() {
-            const currentDate = new Date();
-            const getDay = currentDate.getDay();
-            const oneJan = new Date(currentDate.getFullYear(), 0, 1);
-            const numberOfDays = Math.floor((currentDate - oneJan) / (24 * 60 * 60 * 1000));
-            const weekNumber = Math.ceil((getDay + 1 + numberOfDays) / 7);
+            const date = new Date();
+            const week1 = new Date(date.getFullYear(), 0, 4);
 
-            return weekNumber;
+            date.setHours(0, 0, 0, 0);
+            date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
+
+            return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + ((week1.getDay() + 6) % 7)) / 7);
+        },
+        getDateRangeOfWeek(weekNo) {
+            let weekNoToday, weeksInTheFuture, rangeIsFrom, rangeIsTo;
+
+            const d1 = new Date();
+            const numOfdaysPastSinceLastMonday = d1.getDay() - 1;
+
+            d1.setDate(d1.getDate() - numOfdaysPastSinceLastMonday);
+
+            weekNoToday = this.currentWeekNumber();
+            weeksInTheFuture = weekNo - weekNoToday;
+
+            d1.setDate(d1.getDate() + 7 * weeksInTheFuture);
+            rangeIsFrom = d1.getDate() + "." + (d1.getMonth() + 1) + "." + d1.getFullYear();
+
+            d1.setDate(d1.getDate() + 6);
+            rangeIsTo = d1.getDate() + "." + (d1.getMonth() + 1) + "." + d1.getFullYear();
+
+            return `${weekNo} седмица от ${rangeIsFrom} до ${rangeIsTo}`;
         },
     },
 };
