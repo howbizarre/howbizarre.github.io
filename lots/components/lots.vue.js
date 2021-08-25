@@ -1,34 +1,35 @@
 export default {
     name: "lots",
-    props: ["town", "week"],
+    props: ["town"],
     data() {
         return {
-            currentWeek: this.getDateRangeOfWeek(this.currentWeekNumber()),
-            nextWeek: this.getDateRangeOfWeek(this.currentWeekNumber() + 1),
-            futureWeek: this.getDateRangeOfWeek(this.currentWeekNumber() + 2),
+            currentWeek: this.currentWeekNumber(),
+            currentWeekRange: this.getDateRangeOfWeek(this.currentWeekNumber()),
+            nextWeekRange: this.getDateRangeOfWeek(this.currentWeekNumber() + 1),
+            futureWeekRange: this.getDateRangeOfWeek(this.currentWeekNumber() + 2),
         };
     },
     template: `
         <div class="accordion" id="threeWeekLots">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="weekOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#currentWeek" aria-expanded="true" aria-controls="currentWeek">
-                        {{currentWeek}}
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#currentWeekRange" aria-expanded="true" aria-controls="currentWeekRange">
+                        {{currentWeekRange}}
                     </button>
                 </h2>
-                <div id="currentWeek" class="accordion-collapse collapse show" aria-labelledby="weekOne" data-bs-parent="#threeWeekLots">
+                <div id="currentWeekRange" class="accordion-collapse collapse show" aria-labelledby="weekOne" data-bs-parent="#threeWeekLots">
                     <div class="accordion-body">
-                        Lots for {{town}}
+                        Lots for {{town}} 
                     </div>
                 </div>
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="weekTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nextWeek" aria-expanded="false" aria-controls="nextWeek">
-                        {{nextWeek}}
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nextWeekRange" aria-expanded="false" aria-controls="nextWeek">
+                        {{nextWeekRange}}
                     </button>
                 </h2>
-                <div id="nextWeek" class="accordion-collapse collapse" aria-labelledby="weekTwo" data-bs-parent="#threeWeekLots">
+                <div id="nextWeekRange" class="accordion-collapse collapse" aria-labelledby="weekTwo" data-bs-parent="#threeWeekLots">
                     <div class="accordion-body">
                         Lots for {{town}}
                     </div>
@@ -36,11 +37,11 @@ export default {
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="weekThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#futureWeek" aria-expanded="false" aria-controls="futureWeek">
-                        {{futureWeek}}
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#futureWeekRange" aria-expanded="false" aria-controls="futureWeek">
+                        {{futureWeekRange}}
                     </button>
                 </h2>
-                <div id="futureWeek" class="accordion-collapse collapse" aria-labelledby="weekThree" data-bs-parent="#threeWeekLots">
+                <div id="futureWeekRange" class="accordion-collapse collapse" aria-labelledby="weekThree" data-bs-parent="#threeWeekLots">
                     <div class="accordion-body">
                         Lots for {{town}}
                     </div>
