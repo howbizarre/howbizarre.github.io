@@ -1,8 +1,9 @@
 export default {
     name: "lots",
-    props: ["town"],
+    props: ["town", "grad"],
     data() {
         return {
+            weekTemplate: null,
             currentWeek: this.currentWeekNumber(),
             currentWeekRange: this.getDateRangeOfWeek(this.currentWeekNumber()),
             nextWeekRange: this.getDateRangeOfWeek(this.currentWeekNumber() + 1),
@@ -10,45 +11,48 @@ export default {
         };
     },
     template: `
-        <div class="accordion" id="threeWeekLots">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="weekOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#currentWeekRange" aria-expanded="true" aria-controls="currentWeekRange">
-                        {{currentWeekRange}}
-                    </button>
-                </h2>
-                <div id="currentWeekRange" class="accordion-collapse collapse show" aria-labelledby="weekOne" data-bs-parent="#threeWeekLots">
-                    <div class="accordion-body">
-                        Lots for {{town}} 
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="weekTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nextWeekRange" aria-expanded="false" aria-controls="nextWeek">
-                        {{nextWeekRange}}
-                    </button>
-                </h2>
-                <div id="nextWeekRange" class="accordion-collapse collapse" aria-labelledby="weekTwo" data-bs-parent="#threeWeekLots">
-                    <div class="accordion-body">
-                        Lots for {{town}}
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="weekThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#futureWeekRange" aria-expanded="false" aria-controls="futureWeek">
-                        {{futureWeekRange}}
-                    </button>
-                </h2>
-                <div id="futureWeekRange" class="accordion-collapse collapse" aria-labelledby="weekThree" data-bs-parent="#threeWeekLots">
-                    <div class="accordion-body">
-                        Lots for {{town}}
-                    </div>
-                </div>
-            </div>
+        <div class="table-responsive-sm">
+            <table class="table table-hover border-top border-start align-middle text-center">
+                <tbody>
+                    <tr v-for="week in weekTemplate">
+                        <th scope="row" class="table-light border-end">
+                            {{ week["short-name"] }}
+                        </th>
+                        <td class="border-end" :class="hour.active ? 'table-active' : ''" :key="hour.active" v-for="hour in week['hours']">
+                            <label class="w-100">
+                                {{ hour.time }}
+                                <input type="checkbox" class="form-check-input" :name="currentWeek" :checked="hour.active" />
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     `,
+    created: function () {
+        this.weekTemplate = null;
+
+        axios.get("./models/week.json").then((response) => {
+            this.weekTemplate = response.data.week;
+        });
+    },
+    watch: {
+        grad: {
+            handler(newTown, oldTown) {
+                this.weekTemplate = null;
+
+                axios
+                    .get("./models/" + newTown + "-week.json")
+                    .then((response) => {
+                        console.log(newTown, oldTown);
+                        this.weekTemplate = response.data.week;
+                    })
+                    .catch((error) => {
+                        this.weekTemplate = "Няма дефинирани обекти!?";
+                    });
+            },
+        },
+    },
     methods: {
         currentWeekNumber() {
             const date = new Date();

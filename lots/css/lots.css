@@ -43,3 +43,12 @@
     box-shadow: none;
     color: white;
 }
+
+.accordion-button {
+    background-color: #f9f9f9;
+}
+
+label,
+input[type="checkbox"] {
+    cursor: pointer !important;
+}

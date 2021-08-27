@@ -1,0 +1,242 @@
+{
+    "week": {
+        "monday": {
+            "long-name": "Понеделник",
+            "short-name": "Пн",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": false
+                },
+                {
+                    "time": "11-12",
+                    "active": false
+                },
+                {
+                    "time": "12-13",
+                    "active": true
+                },
+                {
+                    "time": "13-14",
+                    "active": true
+                },
+                {
+                    "time": "14-15",
+                    "active": true
+                },
+                {
+                    "time": "15-16",
+                    "active": true
+                },
+                {
+                    "time": "16-17",
+                    "active": true
+                }
+            ]
+        },
+        "tuesday": {
+            "long-name": "Вторник",
+            "short-name": "Вт",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": true
+                },
+                {
+                    "time": "11-12",
+                    "active": false
+                },
+                {
+                    "time": "12-13",
+                    "active": false
+                },
+                {
+                    "time": "13-14",
+                    "active": false
+                },
+                {
+                    "time": "14-15",
+                    "active": false
+                },
+                {
+                    "time": "15-16",
+                    "active": false
+                },
+                {
+                    "time": "16-17",
+                    "active": false
+                }
+            ]
+        },
+        "wednesday": {
+            "long-name": "Сряда",
+            "short-name": "Ср",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": true
+                },
+                {
+                    "time": "11-12",
+                    "active": true
+                },
+                {
+                    "time": "12-13",
+                    "active": true
+                },
+                {
+                    "time": "13-14",
+                    "active": false
+                },
+                {
+                    "time": "14-15",
+                    "active": false
+                },
+                {
+                    "time": "15-16",
+                    "active": false
+                },
+                {
+                    "time": "16-17",
+                    "active": false
+                }
+            ]
+        },
+        "thursday": {
+            "long-name": "Четвъртък",
+            "short-name": "Чт",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": true
+                },
+                {
+                    "time": "11-12",
+                    "active": true
+                },
+                {
+                    "time": "12-13",
+                    "active": true
+                },
+                {
+                    "time": "13-14",
+                    "active": false
+                },
+                {
+                    "time": "14-15",
+                    "active": false
+                },
+                {
+                    "time": "15-16",
+                    "active": false
+                },
+                {
+                    "time": "16-17",
+                    "active": true
+                }
+            ]
+        },
+        "friday": {
+            "long-name": "Петък",
+            "short-name": "Пт",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": false
+                },
+                {
+                    "time": "11-12",
+                    "active": false
+                },
+                {
+                    "time": "12-13",
+                    "active": false
+                },
+                {
+                    "time": "13-14",
+                    "active": false
+                },
+                {
+                    "time": "14-15",
+                    "active": false
+                },
+                {
+                    "time": "15-16",
+                    "active": false
+                },
+                {
+                    "time": "16-17",
+                    "active": false
+                }
+            ]
+        },
+        "saturday": {
+            "long-name": "Събота",
+            "short-name": "Сб",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": false
+                },
+                {
+                    "time": "11-12",
+                    "active": true
+                },
+                {
+                    "time": "12-13",
+                    "active": true
+                },
+                {
+                    "time": "13-14",
+                    "active": true
+                },
+                {
+                    "time": "14-15",
+                    "active": true
+                },
+                {
+                    "time": "15-16",
+                    "active": true
+                },
+                {
+                    "time": "16-17",
+                    "active": true
+                }
+            ]
+        },
+        "sunday": {
+            "long-name": "Неделя",
+            "short-name": "Нд",
+            "hours": [
+                {
+                    "time": "10-11",
+                    "active": false
+                },
+                {
+                    "time": "11-12",
+                    "active": false
+                },
+                {
+                    "time": "12-13",
+                    "active": false
+                },
+                {
+                    "time": "13-14",
+                    "active": false
+                },
+                {
+                    "time": "14-15",
+                    "active": false
+                },
+                {
+                    "time": "15-16",
+                    "active": false
+                },
+                {
+                    "time": "16-17",
+                    "active": false
+                }
+            ]
+        }
+    }
+}
