@@ -30,7 +30,7 @@ export default {
         </div>
     `,
     created: function () {
-        this.weekTemplate = null;
+        this.weekTemplate = "Зареждане...";
 
         axios.get("./models/week.json").then((response) => {
             this.weekTemplate = response.data.week;
@@ -39,7 +39,7 @@ export default {
     watch: {
         grad: {
             handler(newTown, oldTown) {
-                this.weekTemplate = null;
+                this.weekTemplate = "Зареждане...";
 
                 axios
                     .get("./models/" + newTown + "-week.json")
