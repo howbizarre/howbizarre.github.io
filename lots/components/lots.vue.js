@@ -12,21 +12,7 @@ export default {
     },
     template: `
         <div class="table-responsive-sm">
-            <table class="table table-hover border-top border-start align-middle text-center">
-                <tbody>
-                    <tr v-for="week in weekTemplate">
-                        <th scope="row" class="table-light border-end">
-                            {{ week["short-name"] }}
-                        </th>
-                        <td class="border-end" :class="hour.active ? 'table-active' : ''" :key="hour.active" v-for="hour in week['hours']">
-                            <label class="w-100">
-                                {{ hour.time }}
-                                <input type="checkbox" class="form-check-input" :name="currentWeek" :checked="hour.active" />
-                            </label>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <slot name="tablet" :weekTemplate="weekTemplate" :currentWeek="currentWeek"></slot>
         </div>
     `,
     created: function () {

@@ -3,6 +3,7 @@ import unorderedList from "./components/unordered-list.vue.js";
 import currentRegion from "./components/current-region.vue.js";
 import townsLists from "./components/towns-lists.vue.js";
 import lots from "./components/lots.vue.js";
+import lotsTable from "./components/lots-table.vue.js";
 
 const ListRegions = {
     data() {
@@ -31,5 +32,6 @@ app.component("unordered-list", unorderedList);
 app.component("current-region", currentRegion);
 app.component("towns-lists", townsLists);
 app.component("lots", lots);
+app.component("lots-table", lotsTable);
 
 app.mount("#regions");

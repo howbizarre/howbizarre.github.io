@@ -41,11 +41,15 @@
 
                 <main class="col-md-9 mt-3 ms-sm-auto col-lg-10 px-md-4">
                     <current-region :town="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url">
+                        <template #lots>
+                            <lots :grad="activeRegion.url">
+                                <template #tablet="{weekTemplate, currentWeek}">
+                                    <lots-table :grad="activeRegion.url" :opt="{weekTemplate}" :currentWeek="{currentWeek}"></lots-table>
+                                </template>
+                            </lots>
+                        </template>
                         <template #towns>
                             <towns-lists :msg="activeRegion.url"></towns-lists>
-                        </template>
-                        <template #lots>
-                            <lots :grad="activeRegion.url"></lots>
                         </template>
                     </current-region>
                 </main>
