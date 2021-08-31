@@ -43,8 +43,8 @@
                     <current-region :town="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url">
                         <template #lots>
                             <lots :grad="activeRegion.url">
-                                <template #tablet="{weekTemplate, currentWeek}">
-                                    <lots-table :grad="activeRegion.url" :opt="{weekTemplate}" :currentWeek="{currentWeek}"></lots-table>
+                                <template #tablet="opt">
+                                    <lots-table :opt="opt"></lots-table>
                                 </template>
                             </lots>
                         </template>
