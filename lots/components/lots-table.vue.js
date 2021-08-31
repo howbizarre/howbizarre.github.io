@@ -11,7 +11,7 @@ export default {
                     <td class="border-end" :class="hour.active ? 'table-active' : ''" :key="hour.active" v-for="hour in week.hours">
                         <label class="w-100">
                             {{ hour.time }}
-                            <input type="checkbox" class="form-check-input" :name="opt.currentWeek + '_' + index + '_' + hour.time" :checked="hour.active" />
+                            <input type="checkbox" class="form-check-input" :name="'week-' + opt.currentWeek + '_' + index + '_' + hour.time + '-hour'" :checked="hour.active" />
                         </label>
                     </td>
                 </tr>

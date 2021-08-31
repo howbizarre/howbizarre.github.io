@@ -1,5 +1,5 @@
-import listOfItems from "./components/list-of-items.vue.js";
 import unorderedList from "./components/unordered-list.vue.js";
+import listOfItems from "./components/list-of-items.vue.js";
 import currentRegion from "./components/current-region.vue.js";
 import townsLists from "./components/towns-lists.vue.js";
 import lots from "./components/lots.vue.js";
@@ -27,8 +27,8 @@ const ListRegions = {
 
 const app = Vue.createApp(ListRegions);
 
-app.component("list-of-items", listOfItems);
 app.component("unordered-list", unorderedList);
+app.component("list-of-items", listOfItems);
 app.component("current-region", currentRegion);
 app.component("towns-lists", townsLists);
 app.component("lots", lots);
