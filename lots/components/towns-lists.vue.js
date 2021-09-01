@@ -1,6 +1,6 @@
 export default {
     name: "townsLists",
-    props: ["msg"],
+    props: ["city"],
     data() {
         return {
             activeTowns: "Зареждам...",
@@ -26,12 +26,12 @@ export default {
         </div>
     `,
     watch: {
-        msg: {
-            handler(newMsg, oldMsg) {
+        city: {
+            handler(newCity, oldCity) {
                 axios
-                    .get("./models/" + newMsg + ".json")
+                    .get("./models/" + newCity + ".json")
                     .then((response) => {
-                        this.activeTowns = response.data[newMsg];
+                        this.activeTowns = response.data[newCity];
                     })
                     .catch((error) => {
                         this.activeTowns = "Няма дефинирани обекти!?";
@@ -40,8 +40,8 @@ export default {
         },
     },
     created: function () {
-        axios.get("./models/" + this.msg + ".json").then((response) => {
-            this.activeTowns = response.data[this.msg];
+        axios.get("./models/" + this.city + ".json").then((response) => {
+            this.activeTowns = response.data[this.city];
         });
     },
 };

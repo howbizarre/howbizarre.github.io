@@ -39,20 +39,20 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 mt-3 ms-sm-auto col-lg-10 px-md-4">
+                <section class="col-md-9 mt-3 ms-sm-auto col-lg-10 px-md-4">
                     <current-region :town="activeRegion.name" :id="activeRegion.id" :slug="activeRegion.url">
                         <template #lots>
-                            <lots :grad="activeRegion.url">
-                                <template #tablet="opt">
-                                    <lots-table :opt="opt"></lots-table>
+                            <lots :city="activeRegion.url">
+                                <template #tablet="model">
+                                    <lots-table :model="model"></lots-table>
                                 </template>
                             </lots>
                         </template>
                         <template #towns>
-                            <towns-lists :msg="activeRegion.url"></towns-lists>
+                            <towns-lists :city="activeRegion.url"></towns-lists>
                         </template>
                     </current-region>
-                </main>
+                </section>
             </div>
         </main>
 

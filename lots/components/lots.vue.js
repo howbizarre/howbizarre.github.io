@@ -1,6 +1,6 @@
 export default {
     name: "lots",
-    props: ["town", "grad"],
+    props: ["city"],
     data() {
         return {
             weekTemplate: null,
@@ -23,14 +23,13 @@ export default {
         });
     },
     watch: {
-        grad: {
-            handler(newTown, oldTown) {
+        city: {
+            handler(newCity, oldCity) {
                 this.weekTemplate = "Зареждане...";
 
                 axios
-                    .get("./models/" + newTown + "-week.json")
+                    .get("./models/" + newCity + "-week.json")
                     .then((response) => {
-                        console.log(newTown, oldTown);
                         this.weekTemplate = response.data.week;
                     })
                     .catch((error) => {
