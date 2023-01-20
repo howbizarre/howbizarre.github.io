@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8" />
 
   <title>How Bizarre</title>
@@ -14,140 +11,142 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <style>
-  html,
-  body {
-    --dot-size: 1.5rem;
-    --dot-position: 1rem;
-    --light-gray: #efecea;
-    --dark-gray: #cfcfcf;
-    --light: #fff;
-    --dark: #3c3c3c;
-    --gray: #3c3c3c75;
-    --shadow-color: 25deg 5% 58%;
-    --shadow-elevation-high:
-      0px 1px 1.1px hsl(var(--shadow-color) / 0.34),
-      0.1px 5.8px 6.5px -0.4px hsl(var(--shadow-color) / 0.34),
-      0.1px 10.9px 12.3px -0.7px hsl(var(--shadow-color) / 0.34),
-      0.2px 17.9px 20.1px -1.1px hsl(var(--shadow-color) / 0.34),
-      0.3px 28.6px 32.2px -1.4px hsl(var(--shadow-color) / 0.34),
-      0.4px 44.7px 50.3px -1.8px hsl(var(--shadow-color) / 0.34),
-      0.6px 67.9px 76.4px -2.1px hsl(var(--shadow-color) / 0.34),
-      0.9px 100px 112.5px -2.5px hsl(var(--shadow-color) / 0.34);
-    --shadow-elevation-high-hover:
-      -0.5px 1px 1.3px hsl(var(--shadow-color) / 0.34),
-      -2.9px 5.8px 7.3px -0.4px hsl(var(--shadow-color) / 0.34),
-      -5.4px 10.9px 13.7px -0.7px hsl(var(--shadow-color) / 0.34),
-      -8.8px 17.9px 22.4px -1.1px hsl(var(--shadow-color) / 0.34),
-      -14.1px 28.6px 35.9px -1.4px hsl(var(--shadow-color) / 0.34),
-      -22.1px 44.7px 56.1px -1.8px hsl(var(--shadow-color) / 0.34),
-      -33.6px 67.9px 85.2px -2.1px hsl(var(--shadow-color) / 0.34),
-      -49.4px 100px 125.5px -2.5px hsl(var(--shadow-color) / 0.34);
+    html,
+    body {
+      --dot-size: 1.5rem;
+      --dot-position: 1rem;
+      --light-gray: #efecea;
+      --dark-gray: #cfcfcf;
+      --light: #fff;
+      --dark: #3c3c3c;
+      --gray: #3c3c3c75;
+      --shadow-color: 25deg 5% 58%;
+      --shadow-elevation-high:
+        0px 1px 1.1px hsl(var(--shadow-color) / 0.34),
+        0.1px 5.8px 6.5px -0.4px hsl(var(--shadow-color) / 0.34),
+        0.1px 10.9px 12.3px -0.7px hsl(var(--shadow-color) / 0.34),
+        0.2px 17.9px 20.1px -1.1px hsl(var(--shadow-color) / 0.34),
+        0.3px 28.6px 32.2px -1.4px hsl(var(--shadow-color) / 0.34),
+        0.4px 44.7px 50.3px -1.8px hsl(var(--shadow-color) / 0.34),
+        0.6px 67.9px 76.4px -2.1px hsl(var(--shadow-color) / 0.34),
+        0.9px 100px 112.5px -2.5px hsl(var(--shadow-color) / 0.34);
+      --shadow-elevation-high-hover:
+        -0.5px 1px 1.3px hsl(var(--shadow-color) / 0.34),
+        -2.9px 5.8px 7.3px -0.4px hsl(var(--shadow-color) / 0.34),
+        -5.4px 10.9px 13.7px -0.7px hsl(var(--shadow-color) / 0.34),
+        -8.8px 17.9px 22.4px -1.1px hsl(var(--shadow-color) / 0.34),
+        -14.1px 28.6px 35.9px -1.4px hsl(var(--shadow-color) / 0.34),
+        -22.1px 44.7px 56.1px -1.8px hsl(var(--shadow-color) / 0.34),
+        -33.6px 67.9px 85.2px -2.1px hsl(var(--shadow-color) / 0.34),
+        -49.4px 100px 125.5px -2.5px hsl(var(--shadow-color) / 0.34);
 
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-  body {
-    background-color: var(--light-gray);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    body {
+      background-color: var(--light-gray);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  #howbizarre {
-    position: relative;
-    z-index: 0;
-  }
+    #howbizarre {
+      position: relative;
+      z-index: 0;
+    }
 
-  .vc {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    .vc {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
 
-    width: 100%;
-    height: 100%;
-    max-width: 480px;
-    max-height: 480px;
+      width: 100%;
+      height: 100%;
+      max-width: 480px;
+      max-height: 480px;
 
-    border: 1px solid var(--light-gray);
-    border-radius: var(--dot-size);
+      border: 1px solid var(--light-gray);
+      border-radius: var(--dot-size);
 
-    background-color: var(--light);
-    box-shadow: var(--shadow-elevation-high);
+      background-color: var(--light);
+      box-shadow: var(--shadow-elevation-high);
 
-    transform: rotate(357deg);
-    transition: all 0.25s;
-    transform-origin: calc(var(--dot-position) + calc(var(--dot-size) / 2)) calc(1rem + calc(1.5rem / 2));
+      transform: rotate(357deg);
+      transition: all 0.25s;
+      transform-origin: calc(var(--dot-position) + calc(var(--dot-size) / 2)) calc(1rem + calc(1.5rem / 2));
 
-    z-index: 9;
-    padding: calc(var(--dot-position) * 2);
-  }
+      z-index: 9;
+      padding: calc(var(--dot-position) * 2);
+    }
 
-  .vc::after {
-    display: block;
-    content: '';
-    width: var(--dot-size);
-    height: var(--dot-size);
-    border: 1px solid var(--light-gray);
-    border-radius: var(--dot-size);
-    position: absolute;
-    left: var(--dot-position);
-    top: var(--dot-position);
-    box-shadow:
-      inset 0 2.8px 2.2px rgba(0, 0, 0, 0.004),
-      inset 0 6.7px 5.3px rgba(0, 0, 0, 0.028),
-      inset 0 12.5px 10px rgba(0, 0, 0, 0.04),
-      inset 0 22.3px 17.9px rgba(0, 0, 0, 0.062),
-      inset 0 41.8px 33.4px rgba(0, 0, 0, 0.08),
-      inset 0 100px 80px rgba(0, 0, 0, 0.1);
-  }
+    .vc::after {
+      display: block;
+      content: '';
+      width: var(--dot-size);
+      height: var(--dot-size);
+      border: 1px solid var(--light-gray);
+      border-radius: var(--dot-size);
+      position: absolute;
+      left: var(--dot-position);
+      top: var(--dot-position);
+      box-shadow:
+        inset 0 2.8px 2.2px rgba(0, 0, 0, 0.004),
+        inset 0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        inset 0 12.5px 10px rgba(0, 0, 0, 0.04),
+        inset 0 22.3px 17.9px rgba(0, 0, 0, 0.062),
+        inset 0 41.8px 33.4px rgba(0, 0, 0, 0.08),
+        inset 0 100px 80px rgba(0, 0, 0, 0.1);
+    }
 
-  .vc h1 {
-    font-family: "Yatra One", cursive;
-    font-weight: lighter;
-    margin-bottom: 0;
-    margin-top: calc(var(--dot-position) * 3);
-  }
+    .vc h1 {
+      font-family: "Yatra One", cursive;
+      font-weight: lighter;
+      margin-bottom: 0;
+      margin-top: calc(var(--dot-position) * 3);
+    }
 
-  .vc p {
-    font-family: "Merriweather", serif;
-    margin-bottom: 0;
-  }
+    .vc p {
+      font-family: "Merriweather", serif;
+      margin-bottom: 0;
+    }
 
-  a {
-    transition: all 0.25s;
-    color: var(--gray);
-  }
+    a {
+      transition: all 0.25s;
+      color: var(--gray);
+    }
 
-  a:hover {
-    color: var(--dark);
-  }
+    a:hover {
+      color: var(--dark);
+    }
 
-  .github {
-    position: absolute;
-    left: 37px;
-    bottom: 59px;
-    z-index: -1;
-  }
+    .github {
+      position: absolute;
+      left: 37px;
+      bottom: 59px;
+      z-index: -1;
+    }
 
-  .linkedin {
-    position: absolute;
-    left: 37px;
-    bottom: 26px;
-    z-index: -1;
-  }
+    .linkedin {
+      position: absolute;
+      left: 37px;
+      bottom: 26px;
+      z-index: -1;
+    }
 
-  #howbizarre:hover .vc,
-  #howbizarre:active .vc {
-    transform: rotate(350deg);
-    box-shadow: var(--shadow-elevation-high-hover);
-  }
+    #howbizarre:hover .vc,
+    #howbizarre:active .vc {
+      transform: rotate(350deg);
+      box-shadow: var(--shadow-elevation-high-hover);
+    }
+    
+    @media (max-width:640px) {
+      .vc { max-width: 280px; }
+    }
   </style>
-</head>
-
-<body>
+</head><body>
   <div id="howbizarre">
     <span class="vc">
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -218,6 +217,4 @@
 
   <link rel="stylesheet" media="print" onload="this.removeAttribute('media');this.onload=null"
         href="https://fonts.googleapis.com/css2?family=Merriweather&family=Yatra+One&display=swap" />
-</body>
-
-</html>
+</body></html>
