@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bizarre.how/sitemap.xml
 Sitemap: https://thoughts.bizarre.how/sitemap.xml
